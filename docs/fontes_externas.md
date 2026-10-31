@@ -1,6 +1,12 @@
 # Fontes externas
 
-Dados de fora da base Olist usados para contexto. Nenhum deles entra em cálculo; servem de comparação e curiosidade no relatório.
+Dados de fora da base Olist usados para contexto. Só a população do IBGE entra em cálculo; as demais servem de comparação e curiosidade no relatório.
+
+## População por estado (IBGE)
+
+| Fonte | O que informa | Onde foi usado |
+|---|---|---|
+| [IBGE, SIDRA, tabela 6579: população residente estimada, 2018](https://sidra.ibge.gov.br/tabela/6579) | população de cada estado em 2018 (208,5 milhões no total). Baixada pela API (`apisidra.ibge.gov.br/values/t/6579/n3/all/v/all/p/2018`) e salva em `data/external/populacao_uf_2018_ibge.csv` | notebook 05, itens 8.1 a 8.3 (pedidos por 100 mil habitantes) |
 
 ## Modelo de negócio da Olist (como a Olist ganha dinheiro)
 

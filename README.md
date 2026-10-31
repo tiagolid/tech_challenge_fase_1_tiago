@@ -13,7 +13,8 @@ Relatório executivo para investidores sobre o marketplace Olist (Brazilian E-Co
    p = kagglehub.dataset_download('olistbr/brazilian-ecommerce')
    for f in glob.glob(p + '/*.csv'): shutil.copy(f, 'data/raw/')
    ```
-3. Rode os notebooks em ordem. O `01` gera `data/processed/pedidos.csv`, que os demais usam.
+3. A população por estado do IBGE já vem no repositório, em `data/external/` (fonte em `docs/fontes_externas.md`).
+4. Rode os notebooks em ordem. O `01` gera `data/processed/pedidos.csv`, que os demais usam.
 
 ## Fluxo de dados (ETL)
 
@@ -37,6 +38,7 @@ Kaggle (9 CSVs) ──► data/raw/ ──► notebook 01 ──► data/process
 | 02 | `02_itens_e_pagamentos.ipynb` | A Olist cresce em valor vendido, e esse valor é confiável? (itens e pagamentos) |
 | 03 | `03_avaliacoes_e_clientes.ipynb` | O atraso derruba a nota, e a nota baixa reduz a recompra? (avaliações e clientes) |
 | 04 | `04_vendedores_e_produtos.ipynb` | Onde estão os atrasos e as notas ruins: rotas, vendedores e produtos? |
+| 05 | `05_espaco_para_crescer_e_previsao.ipynb` | Onde ainda há espaço para crescer e o que esperar dos próximos meses? (população do IBGE) |
 
 ## Regras de dados (governança)
 
