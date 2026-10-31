@@ -14,7 +14,8 @@ Relatório executivo para investidores sobre o marketplace Olist (Brazilian E-Co
    for f in glob.glob(p + '/*.csv'): shutil.copy(f, 'data/raw/')
    ```
 3. A população por estado do IBGE já vem no repositório, em `data/external/` (fonte em `docs/fontes_externas.md`).
-4. Rode os notebooks em ordem. O `01` gera `data/processed/pedidos.csv`, que os demais usam.
+4. Rode os notebooks em ordem.
+5. Para o relatório no Power BI, rode `scripts/exporta_powerbi.py` e siga `powerbi/README.md`. O `01` gera `data/processed/pedidos.csv`, que os demais usam.
 
 ## Fluxo de dados (ETL)
 

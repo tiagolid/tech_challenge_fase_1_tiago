@@ -1,0 +1,49 @@
+situacao_entrega =
+IF (
+    fato_pedidos[entregue],
+    IF ( fato_pedidos[atrasado], "Atrasado", "No prazo" )
+)
+
+faixa_atraso =
+IF (
+    fato_pedidos[entregue],
+    SWITCH (
+        TRUE (),
+        fato_pedidos[dias_vs_prometido] <= 0, "No prazo",
+        fato_pedidos[dias_vs_prometido] <= 3, "1 a 3 dias",
+        fato_pedidos[dias_vs_prometido] <= 7, "4 a 7 dias",
+        fato_pedidos[dias_vs_prometido] <= 14, "8 a 14 dias",
+        "15 dias ou mais"
+    )
+)
+
+faixa_atraso_ordem =
+IF (
+    fato_pedidos[entregue],
+    SWITCH (
+        TRUE (),
+        fato_pedidos[dias_vs_prometido] <= 0, 1,
+        fato_pedidos[dias_vs_prometido] <= 3, 2,
+        fato_pedidos[dias_vs_prometido] <= 7, 3,
+        fato_pedidos[dias_vs_prometido] <= 14, 4,
+        5
+    )
+)
+
+grupo_nota =
+SWITCH (
+    TRUE (),
+    ISBLANK ( fato_pedidos[nota] ), BLANK (),
+    fato_pedidos[nota] <= 2, "Nota 1 e 2",
+    fato_pedidos[nota] = 3, "Nota 3",
+    "Nota 4 e 5"
+)
+
+regiao_cliente =
+RELATED ( dim_estado[regiao] )
+
+ano =
+YEAR ( fato_pedidos[mes] )
+
+mes_num =
+MONTH ( fato_pedidos[mes] )

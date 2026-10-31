@@ -1,0 +1,193 @@
+.valor_vendido =
+CALCULATE (
+    SUM ( fato_pedidos[valor_vendido] ),
+    fato_pedidos[venda_valida] = TRUE ()
+)
+
+.valor_vendido_mi =
+DIVIDE ( [.valor_vendido], 1000000 )
+
+.pedidos_vendidos =
+CALCULATE (
+    COUNTROWS ( fato_pedidos ),
+    fato_pedidos[venda_valida] = TRUE ()
+)
+
+.ticket_mediano =
+CALCULATE (
+    MEDIAN ( fato_pedidos[valor_vendido] ),
+    fato_pedidos[venda_valida] = TRUE ()
+)
+
+.pedidos_entregues =
+CALCULATE (
+    COUNTROWS ( fato_pedidos ),
+    fato_pedidos[entregue] = TRUE ()
+)
+
+.pedidos_atrasados =
+CALCULATE (
+    COUNTROWS ( fato_pedidos ),
+    fato_pedidos[entregue] = TRUE (),
+    fato_pedidos[atrasado] = TRUE ()
+)
+
+.pct_atraso =
+DIVIDE ( [.pedidos_atrasados], [.pedidos_entregues] )
+
+.parte_dos_atrasos =
+DIVIDE (
+    [.pedidos_atrasados],
+    CALCULATE ( [.pedidos_atrasados], ALL ( dim_estado ) )
+)
+
+.prazo_mediano_dias =
+CALCULATE (
+    MEDIAN ( fato_pedidos[dias_entrega] ),
+    fato_pedidos[entregue] = TRUE ()
+)
+
+.nota_media =
+CALCULATE (
+    AVERAGE ( fato_pedidos[nota] ),
+    fato_pedidos[entregue] = TRUE ()
+)
+
+.pct_notas_1_2 =
+DIVIDE (
+    CALCULATE (
+        COUNTROWS ( fato_pedidos ),
+        fato_pedidos[entregue] = TRUE (),
+        NOT ISBLANK ( fato_pedidos[nota] ),
+        fato_pedidos[nota] <= 2
+    ),
+    [.pedidos_entregues]
+)
+
+.pct_recompra =
+VAR clientes =
+    CALCULATETABLE (
+        VALUES ( fato_pedidos[cliente] ),
+        fato_pedidos[venda_valida] = TRUE ()
+    )
+VAR dias_por_cliente =
+    ADDCOLUMNS (
+        clientes,
+        "@dias",
+            CALCULATE (
+                DISTINCTCOUNT ( fato_pedidos[data_compra] ),
+                fato_pedidos[venda_valida] = TRUE ()
+            )
+    )
+RETURN
+    DIVIDE (
+        COUNTROWS ( FILTER ( dias_por_cliente, [@dias] > 1 ) ),
+        COUNTROWS ( dias_por_cliente )
+    )
+
+.moradores =
+SUM ( dim_estado[populacao_2018] )
+
+.pct_moradores =
+DIVIDE (
+    [.moradores],
+    CALCULATE ( [.moradores], ALL ( dim_estado ) )
+)
+
+.pct_pedidos =
+DIVIDE (
+    [.pedidos_vendidos],
+    CALCULATE ( [.pedidos_vendidos], ALL ( dim_estado ) )
+)
+
+.pedidos_100mil_moradores =
+DIVIDE ( [.pedidos_vendidos], [.moradores] ) * 100000
+
+.crescimento_mesmo_mes_2017 =
+VAR mes_atual =
+    MAX ( fato_pedidos[mes] )
+VAR valor_ano_anterior =
+    CALCULATE (
+        [.valor_vendido],
+        fato_pedidos[mes] = EDATE ( mes_atual, -12 )
+    )
+RETURN
+    DIVIDE ( [.valor_vendido], valor_ano_anterior ) - 1
+
+.crescimento_jan_jul =
+VAR jan_jul_2017 =
+    CALCULATE (
+        [.valor_vendido],
+        fato_pedidos[mes] >= DATE ( 2017, 1, 1 ),
+        fato_pedidos[mes] <= DATE ( 2017, 7, 1 )
+    )
+VAR jan_jul_2018 =
+    CALCULATE (
+        [.valor_vendido],
+        fato_pedidos[mes] >= DATE ( 2018, 1, 1 ),
+        fato_pedidos[mes] <= DATE ( 2018, 7, 1 )
+    )
+RETURN
+    DIVIDE ( jan_jul_2018, jan_jul_2017 ) - 1
+
+.media_mensal_2018 =
+AVERAGEX (
+    CALCULATETABLE (
+        VALUES ( fato_pedidos[mes] ),
+        fato_pedidos[mes] >= DATE ( 2018, 1, 1 ),
+        fato_pedidos[mes] <= DATE ( 2018, 7, 1 )
+    ),
+    [.valor_vendido]
+)
+
+.efeito_black_friday =
+VAR novembro =
+    CALCULATE ( [.valor_vendido], fato_pedidos[mes] = DATE ( 2017, 11, 1 ) )
+VAR outubro =
+    CALCULATE ( [.valor_vendido], fato_pedidos[mes] = DATE ( 2017, 10, 1 ) )
+VAR dezembro =
+    CALCULATE ( [.valor_vendido], fato_pedidos[mes] = DATE ( 2017, 12, 1 ) )
+RETURN
+    DIVIDE ( novembro, ( outubro + dezembro ) / 2 ) - 1
+
+.previsao_mensal_mi =
+MAX ( t_previsao_mensal[previsto_mi] )
+
+.faixa_min_mi =
+MIN ( t_previsao_mensal[faixa_min_mi] )
+
+.faixa_max_mi =
+MAX ( t_previsao_mensal[faixa_max_mi] )
+
+.novembro_2018_estimado_mi =
+MAX ( t_previsao_mensal[black_friday_mi] )
+
+.pct_atrasados_avaliam_antes =
+CALCULATE (
+    SUM ( t_avaliacao_atrasados[pct_dos_atrasados] ),
+    t_avaliacao_atrasados[momento] = "Antes de receber"
+)
+
+.pct_atrasados_postados_no_prazo =
+CALCULATE (
+    SUM ( t_etapas_entrega[pct_postou_no_prazo] ),
+    t_etapas_entrega[situacao] = "Atrasado"
+)
+
+.dias_transportadora_atrasados =
+CALCULATE (
+    SUM ( t_etapas_entrega[dias_transportadora_mediana] ),
+    t_etapas_entrega[situacao] = "Atrasado"
+)
+
+.dias_transportadora_no_prazo =
+CALCULATE (
+    SUM ( t_etapas_entrega[dias_transportadora_mediana] ),
+    t_etapas_entrega[situacao] = "No prazo"
+)
+
+.pct_satisfeitos_compra_unica =
+CALCULATE (
+    SUM ( t_recompra_por_nota[pct_compra_unica] ),
+    t_recompra_por_nota[grupo_nota] = "Nota 4 e 5"
+)
