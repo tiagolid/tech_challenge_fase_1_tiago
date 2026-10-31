@@ -1,0 +1,21 @@
+# Para a apresentação
+
+Achados que o Tiago escolheu levar ao relatório e ao vídeo. Cada item aponta de onde veio, para conferir o número.
+
+| # | Achado | Por que interessa ao investidor | Origem |
+|---|---|---|---|
+| 1 | A base não informa a receita da Olist nem o custo da operação. Nenhuma das 9 tabelas traz comissão, mensalidade ou custo; só preço, frete e pagamento do cliente. O número disponível é o valor vendido (GMV): R\$ 15,68 mi no recorte, sendo R\$ 13,45 mi em produtos e R\$ 2,23 mi (14%) em frete | deixa claro o limite dos dados: dá para medir crescimento de vendas, não receita, margem ou lucro | notebook 02, item 2.6 |
+| 2 | Como curiosidade: reportagens de 2019 a 2021 citam uma comissão de **cerca de 20%** sobre cada venda, mais mensalidade. Sempre com "cerca de" ou "aproximadamente", nunca como certeza (fontes posteriores à base) | dá uma ordem de grandeza de como a Olist ganha dinheiro | notebook 02, item 2.6; `docs/fontes_externas.md` |
+| 3 | Formas de pagamento: cartão de crédito 73,9%, boleto 19,0%, voucher 5,6%, débito 1,5% (gráfico de barras horizontais); no cartão, mediana de 3 parcelas para um pedido típico de cerca de R\$ 105 | o crédito facilita a compra; parcelamento é alavanca de vendas | notebook 02, item 3.6 |
+| 4 | A pesquisa de satisfação sai na data prometida mesmo sem o produto ter chegado: 73% dos atrasados avaliam antes de receber (75% deles com nota 1 ou 2). Regra confirmada na descrição oficial da base | a Olist se expõe a ser avaliada justamente quando erra; a nota mede a entrega, que é o serviço dela | notebook 03, item 4.7 |
+| 5 | Recompra muito baixa: só 2,2% dos clientes voltam a comprar em outro dia; mesmo entre os satisfeitos, 97% compram uma vez só | o crescimento depende de cliente novo; retenção é um problema de todos, não só dos insatisfeitos | notebook 03, itens 5.2 e 5.3 |
+| 6 | O Rio de Janeiro atrasa 12% dos pedidos e concentra 23% de todos os atrasos (SP, com três vezes mais pedidos, tem 28%). Fazer um gráfico de barras com a parte de cada estado no total de atrasos | mostra onde agir primeiro: volume alto com atraso alto | notebook 04, item 6.4 (coluna `parte_dos_atrasos`) |
+| 7 | Curiosidade: as 5 categorias que mais vendem são beleza e saúde (9,1%), relógios e presentes (8,3%), cama, mesa e banho (7,9%), esporte e lazer (7,3%) e informática e acessórios (6,7%); as 10 maiores somam 62% e nenhuma passa de 10% | a Olist não depende de uma categoria | notebook 04, item 7.2 |
+| 8 | O atraso está no transporte: nos atrasados, a transportadora leva 26 dias (contra 7 no prazo) e 72% deles foram postados pelo lojista dentro do prazo. Segundo a descrição oficial da base, o lojista posta e o transporte é feito pelos parceiros logísticos da Olist | o atraso está na parte que a Olist escolhe e negocia (parceiros e prazo prometido), não no lojista; é acionável | notebook 04, item 6.5; `docs/fontes_externas.md` |
+| 9 | Análise dos comentários com IA (Gemini 4 Argon, amostra de 1.500 comentários por nota): atraso lidera as notas 1 a 3, entrega antes do prazo lidera as notas 4 e 5; a entrega domina as duas pontas da escala. Levar com **aviso de uso de IA** no vídeo e no deck (percentuais são estimativas do modelo, não contagens) | mostra o porquê das notas; a promessa de prazo folgada encanta o cliente | notebook 03, item 4.9; `docs/temas_comentarios/` |
+| 10 | Quem está insatisfeito escreve mais: 77% de quem dá nota 1 deixa comentário, contra 36% de quem dá nota 5 | óbvio para o senso comum, mas avisa que os comentários exageram os problemas em relação aos elogios | notebook 03, item 4.9 |
+
+## Decidido não levar
+
+- Avaliação compartilhada entre pedidos (4.2): confusa de explicar.
+- Notas ruins em pedidos com vários vendedores (46%) e a parte dos pedidos com vários itens nas notas ruins (6.7): complicado para a apresentação.
