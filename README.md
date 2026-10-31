@@ -45,7 +45,7 @@ Kaggle (9 CSVs) ──► data/raw/ ──► notebook 01 ──► data/process
 | Itens e pagamentos multiplicam linhas ao juntar (+27% no total pago) | Resumir cada tabela por pedido antes de juntar |
 | Pontas do período quase vazias | Recorte de jan/2017 a ago/2018 |
 | `customer_id` muda a cada pedido | Cliente = `customer_unique_id` |
-| `geolocation` com ~53 linhas por CEP | Coordenada média por CEP |
+| `geolocation` com ~53 linhas por CEP | Coordenada média por CEP. A distância em km foi testada (notebook 04, item 6.4.1) e não muda nenhuma conclusão: o relatório usa o estado |
 | Pedido com mais de uma avaliação | Última avaliação respondida |
 | Valor vendido (GMV) | Preço + frete dos itens, sem pedidos cancelados ou indisponíveis. Receita e lucro da Olist não estão na base (comissão de 19% a 21% segundo o NeoFeed, 2021) |
 | Prazo e atraso | Só pedidos entregues, comparando dia com dia com a data prometida |
