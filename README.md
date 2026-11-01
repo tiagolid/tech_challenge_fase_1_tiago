@@ -7,6 +7,7 @@ Relatório executivo para investidores sobre o marketplace Olist (Brazilian E-Co
 ## Entregas
 
 - **Relatório executivo (Power BI):** [link público](https://app.powerbi.com/view?r=eyJrIjoiMThjMzFjYmItYTJhMi00NDhjLTg3MzAtZTI5Mzg0NmViNGYzIiwidCI6Ijk4YTNmZjI0LTI0NDgtNDk3Zi1hZjJkLTFiZThjZjlmMGM2OCJ9). Cópia em PDF em [`powerbi/Olist_Tech_Challenge.pdf`](powerbi/Olist_Tech_Challenge.pdf) e o arquivo em `powerbi/Olist_Tech_Challenge.pbix`.
+- **Vídeo de apresentação (até 5 minutos):** https://youtu.be/agazrKhDXNw
 - **Notebooks com a análise:** pasta `notebooks/` (lista abaixo).
 
 ## Principais resultados
