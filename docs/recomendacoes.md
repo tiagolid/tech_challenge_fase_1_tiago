@@ -2,9 +2,9 @@
 
 Ações para o investidor, tiradas dos achados de `para_apresentacao.md`. Ordem por urgência, olhando a partir do fim da base (ago/2018).
 
-## 1. Preparar a entrega para a Black Friday
+## 1. Preparar a entrega para a Black Friday de 2018
 
-Na Black Friday de 2017 as vendas subiram 44% e o atraso triplicou (de 4,2% para 12,4%), com a nota caindo de 4,2 para 4,0. Novembro de 2018 deve ser de novo o maior mês do ano, em torno de R$ 1,56 mi.
+Na Black Friday de 2017 as vendas subiram 44% e o atraso triplicou (de 4,2% em outubro para 12,4% em novembro), com a nota caindo de 4,2 para 4,0. A próxima é em 23/11/2018, depois do fim da base, e novembro deve ser de novo o maior mês do ano, em torno de R$ 1,56 mi.
 
 - Combinar capacidade extra com as transportadoras antes de novembro.
 - Dar mais folga ao prazo prometido nas semanas da Black Friday, principalmente nas rotas para o RJ e o Nordeste.
