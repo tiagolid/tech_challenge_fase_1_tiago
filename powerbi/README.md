@@ -2,6 +2,8 @@
 
 O relatório executivo é montado no Power BI a partir das tabelas geradas por `scripts/exporta_powerbi.py`, com as mesmas regras dos notebooks.
 
+Versão publicada: [link público](https://app.powerbi.com/view?r=eyJrIjoiMThjMzFjYmItYTJhMi00NDhjLTg3MzAtZTI5Mzg0NmViNGYzIiwidCI6Ijk4YTNmZjI0LTI0NDgtNDk3Zi1hZjJkLTFiZThjZjlmMGM2OCJ9). Cópia em PDF: `Olist_Tech_Challenge.pdf`.
+
 ## Como montar
 
 1. Gere as tabelas: `python scripts/exporta_powerbi.py` (grava em `data/powerbi/`).
