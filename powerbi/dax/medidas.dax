@@ -5,11 +5,38 @@ CALCULATE (
 )
 
 .valor_vendido_mi =
-DIVIDE ( [.valor_vendido], 1000000 )
+DIVIDE ( [.valor_vendido], 1 )
 
 .pedidos_vendidos =
 CALCULATE (
     COUNTROWS ( fato_pedidos ),
+    fato_pedidos[venda_valida] = TRUE ()
+)
+
+.valor_produtos =
+CALCULATE (
+    SUM ( fato_pedidos[valor_produtos] ),
+    fato_pedidos[venda_valida] = TRUE ()
+)
+
+.valor_frete =
+CALCULATE (
+    SUM ( fato_pedidos[valor_frete] ),
+    fato_pedidos[venda_valida] = TRUE ()
+)
+
+.pct_frete =
+DIVIDE ( [.valor_frete], [.valor_vendido] )
+
+.clientes =
+CALCULATE (
+    DISTINCTCOUNT ( fato_pedidos[cliente] ),
+    fato_pedidos[venda_valida] = TRUE ()
+)
+
+.estados_atendidos =
+CALCULATE (
+    DISTINCTCOUNT ( fato_pedidos[uf_cliente] ),
     fato_pedidos[venda_valida] = TRUE ()
 )
 
@@ -64,6 +91,12 @@ DIVIDE (
     [.pedidos_entregues]
 )
 
+.pct_dos_entregues =
+DIVIDE (
+    [.pedidos_entregues],
+    CALCULATE ( [.pedidos_entregues], ALL ( fato_pedidos[grupo_nota] ) )
+)
+
 .pct_recompra =
 VAR clientes =
     CALCULATETABLE (
@@ -112,7 +145,10 @@ VAR valor_ano_anterior =
         fato_pedidos[mes] = EDATE ( mes_atual, -12 )
     )
 RETURN
-    DIVIDE ( [.valor_vendido], valor_ano_anterior ) - 1
+    IF (
+        NOT ISBLANK ( valor_ano_anterior ),
+        DIVIDE ( [.valor_vendido], valor_ano_anterior ) - 1
+    )
 
 .crescimento_jan_jul =
 VAR jan_jul_2017 =

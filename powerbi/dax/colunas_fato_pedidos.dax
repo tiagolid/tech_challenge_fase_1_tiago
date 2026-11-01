@@ -33,7 +33,7 @@ IF (
 grupo_nota =
 SWITCH (
     TRUE (),
-    ISBLANK ( fato_pedidos[nota] ), BLANK (),
+    ISBLANK ( fato_pedidos[nota] ), "Sem nota",
     fato_pedidos[nota] <= 2, "Nota 1 e 2",
     fato_pedidos[nota] = 3, "Nota 3",
     "Nota 4 e 5"
