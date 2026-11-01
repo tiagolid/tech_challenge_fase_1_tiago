@@ -240,6 +240,24 @@ MAX ( t_previsao_mensal[faixa_max_mi] )
 .novembro_2018_estimado_mi =
 MAX ( t_previsao_mensal[black_friday_mi] )
 
+.previsao_mensal =
+[.previsao_mensal_mi] * 1000000
+
+.faixa_min =
+[.faixa_min_mi] * 1000000
+
+.faixa_max =
+[.faixa_max_mi] * 1000000
+
+.novembro_2018_estimado =
+[.novembro_2018_estimado_mi] * 1000000
+
+.pct_atraso_out_2017 =
+CALCULATE ( [.pct_atraso], fato_pedidos[mes] = DATE ( 2017, 10, 1 ) )
+
+.pct_atraso_nov_2017 =
+CALCULATE ( [.pct_atraso], fato_pedidos[mes] = DATE ( 2017, 11, 1 ) )
+
 .pct_atrasados_avaliam_antes =
 CALCULATE (
     SUM ( t_avaliacao_atrasados[pct_dos_atrasados] ),
