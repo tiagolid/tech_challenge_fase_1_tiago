@@ -1,6 +1,6 @@
 # Para a apresentação
 
-Achados que o Tiago escolheu levar ao relatório e ao vídeo. Cada item aponta de onde veio, para conferir o número.
+Achados que escolhi levar ao relatório e ao vídeo. Cada item aponta de onde veio, para conferir o número.
 
 | # | Achado | Por que interessa ao investidor | Origem |
 |---|---|---|---|

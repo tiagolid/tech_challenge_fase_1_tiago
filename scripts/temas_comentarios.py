@@ -96,10 +96,10 @@ for nota in notas:
 
     cabecalho = (f'# Comentários das avaliações com nota {nota}\n\n'
                  f'- Modelo: {MODELO} (via agy), uma chamada por nota\n'
-                 f'- Comentários analisados: amostra aleatória de {len(linhas):,} de {total:,} '
+                 f'- Comentários analisados: amostra aleatória de {len(linhas):_} de {total:_} '.replace('_', '.') +
                  f'(semente {SEMENTE}; última avaliação respondida de cada pedido)\n'
                  f'- Data: {inicio:%d/%m/%Y %H:%M}\n'
-                 f'- Tokens de entrada: {recebido:,}\n'
+                 f'- Tokens de entrada: {recebido:_}\n'.replace('_', '.') +
                  f'- As parcelas são estimativas do modelo, não contagens.\n\n')
     (SAIDA / f'nota_{nota}.md').write_text(cabecalho + resultado['response'], encoding='utf-8')
     print(f'nota {nota}: ok em {resultado["duration_seconds"]:.0f}s', flush=True)

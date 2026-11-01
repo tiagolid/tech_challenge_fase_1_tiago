@@ -1,9 +1,9 @@
 # Comentários das avaliações com nota 5
 
 - Modelo: gemini-4-argon-high (via agy), uma chamada por nota
-- Comentários analisados: amostra aleatória de 1,500 de 20,449 (semente 42; última avaliação respondida de cada pedido)
+- Comentários analisados: amostra aleatória de 1.500 de 20.449 (semente 42; última avaliação respondida de cada pedido)
 - Data: 28/10/2026 19:37
-- Tokens de entrada: 27,741
+- Tokens de entrada: 27.741
 - As parcelas são estimativas do modelo, não contagens.
 
 ## Temas mais comuns (nota 5)
