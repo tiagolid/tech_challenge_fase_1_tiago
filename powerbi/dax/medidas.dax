@@ -25,9 +25,6 @@ CALCULATE (
     fato_pedidos[venda_valida] = TRUE ()
 )
 
-.pct_frete =
-DIVIDE ( [.valor_frete], [.valor_vendido] )
-
 .clientes =
 CALCULATE (
     DISTINCTCOUNT ( fato_pedidos[cliente] ),
@@ -231,29 +228,14 @@ RETURN
 .previsao_mensal_mi =
 MAX ( t_previsao_mensal[previsto_mi] )
 
-.faixa_min_mi =
-MIN ( t_previsao_mensal[faixa_min_mi] )
-
-.faixa_max_mi =
-MAX ( t_previsao_mensal[faixa_max_mi] )
-
 .novembro_2018_estimado_mi =
 MAX ( t_previsao_mensal[black_friday_mi] )
 
 .previsao_mensal =
 [.previsao_mensal_mi] * 1000000
 
-.faixa_min =
-[.faixa_min_mi] * 1000000
-
-.faixa_max =
-[.faixa_max_mi] * 1000000
-
 .novembro_2018_estimado =
 [.novembro_2018_estimado_mi] * 1000000
-
-.pct_atraso_out_2017 =
-CALCULATE ( [.pct_atraso], fato_pedidos[mes] = DATE ( 2017, 10, 1 ) )
 
 .pct_atraso_nov_2017 =
 CALCULATE ( [.pct_atraso], fato_pedidos[mes] = DATE ( 2017, 11, 1 ) )
@@ -274,12 +256,6 @@ CALCULATE (
 CALCULATE (
     SUM ( t_etapas_entrega[dias_transportadora_mediana] ),
     t_etapas_entrega[situacao] = "Atrasado"
-)
-
-.dias_transportadora_no_prazo =
-CALCULATE (
-    SUM ( t_etapas_entrega[dias_transportadora_mediana] ),
-    t_etapas_entrega[situacao] = "No prazo"
 )
 
 .pct_satisfeitos_compra_unica =
