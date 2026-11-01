@@ -68,6 +68,20 @@ DIVIDE (
     CALCULATE ( [.pedidos_atrasados], ALL ( dim_estado ) )
 )
 
+.parte_dos_atrasos_rj =
+CALCULATE (
+    [.parte_dos_atrasos],
+    REMOVEFILTERS ( dim_estado ),
+    dim_estado[uf] = "RJ"
+)
+
+.pct_atraso_rj =
+CALCULATE (
+    [.pct_atraso],
+    REMOVEFILTERS ( dim_estado ),
+    dim_estado[uf] = "RJ"
+)
+
 .prazo_mediano_dias =
 CALCULATE (
     MEDIAN ( fato_pedidos[dias_entrega] ),
@@ -135,6 +149,34 @@ DIVIDE (
 
 .pedidos_100mil_moradores =
 DIVIDE ( [.pedidos_vendidos], [.moradores] ) * 100000
+
+.pct_moradores_ne =
+CALCULATE (
+    [.pct_moradores],
+    REMOVEFILTERS ( dim_estado ),
+    dim_estado[regiao] = "Nordeste"
+)
+
+.pct_pedidos_ne =
+CALCULATE (
+    [.pct_pedidos],
+    REMOVEFILTERS ( dim_estado ),
+    dim_estado[regiao] = "Nordeste"
+)
+
+.pedidos_100mil_moradores_ne =
+CALCULATE (
+    [.pedidos_100mil_moradores],
+    REMOVEFILTERS ( dim_estado ),
+    dim_estado[regiao] = "Nordeste"
+)
+
+.pct_atraso_ne =
+CALCULATE (
+    [.pct_atraso],
+    REMOVEFILTERS ( dim_estado ),
+    dim_estado[regiao] = "Nordeste"
+)
 
 .crescimento_mesmo_mes_2017 =
 VAR mes_atual =
